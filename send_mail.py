@@ -4,17 +4,17 @@ import webapp2
 
 class SendMessageHandler(webapp2.RequestHandler):
     def get(self):
-        name = self.request.get("fullname")
+        name = self.request.get("name")
         email = self.request.get("email")
-        details = self.request.get("details")
-        message = mail.EmailMessage(
-            sender="EMAIL",
+        message = self.request.get("message")
+        messagex = mail.EmailMessage(
+            sender="crgomez167@gmail.com",
             subject=str(name) + " has submitted a proposal.")
 
-        message.to = "NAME <EMAIL>"
-        message.body = "Name:\n" + str(name) + "\n\nEmail:\n" + str(email) + "\n\nDetails:\n" + str(details)
+        messagex.to = "Carlos R Gomez <crgomez167@gmail.com>"
+        messagex.body = "Name:\n" + str(name) + "\n\nEmail:\n" + str(email) + "\n\nMessage:\n" + str(message)
 
-        message.send()
+        messagex.send()
 
 app = webapp2.WSGIApplication([
     ('/send_mail', SendMessageHandler),
