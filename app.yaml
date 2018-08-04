@@ -3,9 +3,13 @@ api_version: 1
 threadsafe: true
 
 handlers:
-- url: /
-  static_files: www/contact.html
-  upload: www/contact.html
-
 - url: /send_mail
   script: send_mail.app
+
+- url: /
+  static_files: www/index.html
+  upload: www/index.html
+
+- url: /(.+)
+  static_files: www/\1
+  upload: www/(.+)
