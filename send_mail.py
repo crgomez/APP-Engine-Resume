@@ -8,14 +8,20 @@ class SendMessageHandler(webapp2.RequestHandler):
         email = self.request.get("email")
         message = self.request.get("message")
         messagex = mail.EmailMessage(
-            sender="Authorized APP ENG SENDER",
+            sender="crgomez167@gmail.com",
             subject=str(name) + " has submitted a proposal.")
 
-        messagex.to = "First LAST <EMAIL@ADDRESS.COM>"
+        messagex.to = "Carlos R Gomez <crgomez167@gmail.com>"
         messagex.body = "Name:\n" + str(name) + "\n\nEmail:\n" + str(email) + "\n\nMessage:\n" + str(message)
 
         messagex.send()
+		
+	if SendMessageHandler(self.request):
+  		self.redirect("https://ultra-mason-192618.appspot.com")
 
+
+    
+		
 app = webapp2.WSGIApplication([
     ('/send_mail', SendMessageHandler),
 ], debug=True)
